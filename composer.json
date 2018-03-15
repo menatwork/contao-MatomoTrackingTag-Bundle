@@ -1,0 +1,52 @@
+{
+	"name": "menatwork/contao-matomotrackingtag-bundle",
+	"description": "Includes the tracking code of the web analytics software Matomo",
+	"keywords":["piwik", "frontend", "analytics", "statistics", "matomo"],
+	"type": "contao-bundle",
+	"homepage": "http://www.men-at-work.de",
+	"license": "LGPL-3.0-or-later",
+	"authors":[
+		{
+			"name":"Andreas Isaak",
+			"email":"isaak@men-at-work.de",
+			"homepage":"http://www.men-at-work.de",
+			"role":"Developer"
+		},
+		{
+			"name":"Stefan Heimes",
+			"email":"heimes@men-at-work.de",
+			"homepage":"http://www.men-at-work.de",
+			"role":"Developer"
+		},
+		{
+			"name":"Andreas Dziemba",
+			"email":"dziemba@men-at-work.de",
+			"homepage":"http://www.men-at-work.de",
+			"role":"Developer"
+		}
+	],
+	"support":{
+		"email":"contao@men-at-work.de",
+		"issues":"https://github.com/menatwork-ia/PiwikTrackingTag/issues",
+		"irc":"irc://irc.freenode.org/contao.dev",
+		"source":"https://github.com/menatwork-ia/PiwikTrackingTag"
+	},
+	"require":{
+		"php":"^7.0",
+		"contao/core-bundle": "^4.4",
+		"menatwork/contao-multicolumnwizard":"~3.3"
+	},
+	"autoload":{
+		"psr-4": {
+			"MenAtWork\\MatomoTrackingTagBundle\\": "src"
+		}
+	},
+	"replace":{
+		"contao-legacy/piwiktrackingtag":"*",
+		"menatwork/piwiktrackingtag":"*"
+	},
+    "extra": {
+		"contao-manager-plugin": "MenAtWork\\MatomoTrackingTagBundle\\ContaoManager\\Plugin"
+    },
+  "minimum-stability": "dev"
+}
