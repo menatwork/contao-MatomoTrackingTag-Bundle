@@ -27,9 +27,9 @@
 	],
 	"support":{
 		"email":"contao@men-at-work.de",
-		"issues":"https://github.com/menatwork-ia/PiwikTrackingTag/issues",
+		"issues":"https://github.com/menatwork/contao-MatomoTrackingTag-Bundle/issues",
 		"irc":"irc://irc.freenode.org/contao.dev",
-		"source":"https://github.com/menatwork-ia/PiwikTrackingTag"
+		"source":"https://github.com/menatwork/contao-MatomoTrackingTag-Bundle"
 	},
 	"require":{
 		"php":"^7.0",
@@ -47,6 +47,5 @@
 	},
     "extra": {
 		"contao-manager-plugin": "MenAtWork\\MatomoTrackingTagBundle\\ContaoManager\\Plugin"
-    },
-  "minimum-stability": "dev"
+    }
 }
