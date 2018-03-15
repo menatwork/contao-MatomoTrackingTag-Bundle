@@ -53,7 +53,7 @@ class PiwikTrackingTag extends \Backend
 
             // Remove TL_ROOT
             $mixPath = str_replace(array(TL_ROOT), '', $mixPath);
-            // Remove system/modules and co from path
+            // Remove vendor/menatwork/contao-matomotrackingtag-bundle/src/Resources/contao and co from path
             if (stripos($mixPath, 'vendor/menatwork/contao-matomotrackingtag-bundle/src/Resources/contao/') !== false)
             {
                 $mixPath = str_replace(array('vendor/menatwork/contao-matomotrackingtag-bundle/src/Resources/contao/', 'templates'), '', $mixPath);
