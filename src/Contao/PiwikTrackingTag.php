@@ -54,9 +54,9 @@ class PiwikTrackingTag extends \Backend
             // Remove TL_ROOT
             $mixPath = str_replace(array(TL_ROOT), '', $mixPath);
             // Remove system/modules and co from path
-            if (stripos($mixPath, '../MatomoTrackingTag/matomotrackingtag-bundle/src/Resources/contao/') !== false)
+            if (stripos($mixPath, 'vendor/menatwork/contao-matomotrackingtag-bundle/src/Resources/contao/') !== false)
             {
-                $mixPath = str_replace(array('../MatomoTrackingTag/matomotrackingtag-bundle/src/Resources/contao/', 'templates'), '', $mixPath);
+                $mixPath = str_replace(array('vendor/menatwork/contao-matomotrackingtag-bundle/src/Resources/contao/', 'templates'), '', $mixPath);
             }
 
             $mixPath = explode('/', $mixPath);
@@ -247,13 +247,12 @@ class PiwikTrackingTag extends \Backend
         }
 
         // Check if user/members should not be counted
-//        if (!$objSettings->piwikCountAdmins AND $this->Input->Cookie('BE_USER_AUTH'))
-//        {
-//            // Tracking users disabled
-//            $GLOBALS[$this->strScriptType][] = "<!-- MatomoTrackingTag: Tracking users disabled -->";
-//        }
-//        else
-            if (!$objSettings->piwikCountUsers AND FE_USER_LOGGED_IN)
+        if (!$objSettings->piwikCountAdmins AND $this->Input->Cookie('BE_USER_AUTH'))
+        {
+            // Tracking users disabled
+            $GLOBALS[$this->strScriptType][] = "<!-- MatomoTrackingTag: Tracking users disabled -->";
+        }
+        elseif (!$objSettings->piwikCountUsers AND FE_USER_LOGGED_IN)
         {
             // Tracking members disabled
             $GLOBALS[$this->strScriptType][] = "<!-- MatomoTrackingTag: Tracking members disabled -->";
