@@ -22,6 +22,8 @@ class PiwikTrackingTag extends \Backend
 
     protected $strScriptType = 'TL_MOOTOOLS';
 
+    protected static $objSettings;
+
     /**
     * Load the database object
     */
@@ -33,6 +35,16 @@ class PiwikTrackingTag extends \Backend
         }
 
         parent::__construct();
+    }
+
+    /**
+     * Get the stored object of the matomo settings.
+     *
+     * @return \PageModel|\LayoutModel|null
+     */
+    public static function getSettings()
+    {
+        return static::$objSettings;
     }
 
     /**
@@ -155,6 +167,33 @@ class PiwikTrackingTag extends \Backend
     }
 
     /**
+     * Initialize matomo settings.
+     *
+     * @param object $objPage
+     * @param object $objLayout
+     *
+     * @return void
+     */
+    public function initializeSettings($objPage, $objLayout)
+    {
+        // Find root page
+        $objRootPage = $this->getRootPage($objPage->id);
+
+        if ($objPage->piwikEnabled)
+        {
+            static::$objSettings = $objPage;
+        }
+        elseif ($objRootPage->piwikEnabled)
+        {
+            static::$objSettings = $objRootPage;
+        }
+        elseif ($objLayout != FALSE && $objLayout->piwikEnabled)
+        {
+            static::$objSettings = $objLayout;
+        }
+    }
+
+    /**
      * Create Piwik JS
      *
      * @global object $objPage
@@ -218,33 +257,13 @@ class PiwikTrackingTag extends \Backend
             }
         }
 
-        // Get current page
-        global $objPage;
-
-        // Find root page
-        $objRootPage = $this->getRootPage($objPage->id);
-        // Load layout informations
-        $objLayout = $this->getPageLayout($objPage->layout);
-
-        if ($objPage->piwikEnabled)
-        {
-            $objSettings = $objPage;
-            $this->setCurrentTemplate($objPage->piwikTemplate);
-        }
-        elseif ($objRootPage->piwikEnabled)
-        {
-            $objSettings = $objRootPage;
-            $this->setCurrentTemplate($objRootPage->piwikTemplate);
-        }
-        elseif ($objLayout != FALSE && $objLayout->piwikEnabled)
-        {
-            $objSettings = $objLayout;
-            $this->setCurrentTemplate($objLayout->piwikTemplate);
-        }
-        else
+        if (!static::$objSettings)
         {
             return;
         }
+
+        $objSettings = static::$objSettings;
+        $this->setCurrentTemplate($objSettings->piwikTemplate);
 
         // Check if user/members should not be counted
         if (!$objSettings->piwikCountAdmins AND $this->Input->Cookie('BE_USER_AUTH'))
