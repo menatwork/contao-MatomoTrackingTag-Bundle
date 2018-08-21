@@ -6,9 +6,10 @@
 <button type="button"
         id="matomo-optout-btn"
         style="display:none"
-        data-matomo-url="<?= $this->matomoUrl ?>"
-        data-label-deactivate="<?= $this->matomo_btn_deactivate ?>"
-        data-label-activate="<?= $this->matomo_btn_activate ?>"></button>
+        data-matomo-url="<?= \StringUtil::specialchars($this->matomoUrl) ?>"
+        data-label-deactivate="<?= \StringUtil::specialchars($this->matomo_btn_deactivate) ?>"
+        data-label-activate="<?= \StringUtil::specialchars($this->matomo_btn_activate) ?>"
+        data-cookie-error="<?= \StringUtil::specialchars($this->cookieError) ?>"></button>
 <div id="matomo-status-activated" style="display: none"><?= $this->matomo_status_activated ?></div>
 <div id="matomo-status-deactivated" style="display: none"><?= $this->matomo_status_deactivated ?></div>
 <noscript>

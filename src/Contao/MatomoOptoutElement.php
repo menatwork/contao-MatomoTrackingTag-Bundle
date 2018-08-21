@@ -80,6 +80,7 @@ final class MatomoOptoutElement extends ContentElement
      */
     protected function compile()
     {
-        $this->Template->matomoUrl = PiwikTrackingTag::getSettings()->piwikPath;
+        $this->Template->matomoUrl   = PiwikTrackingTag::getSettings()->piwikPath;
+        $this->Template->cookieError = $GLOBALS['TL_LANG']['ERR']['matomoCookie'];
     }
 }

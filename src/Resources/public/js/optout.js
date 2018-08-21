@@ -21,9 +21,10 @@ var matomoOptOut = function (options) {
     this.deactivatedStatus = document.getElementById(this.options.selectors.deactivatedStatus);
 
     this.deactivateLabel = this.btn.getAttribute('data-label-deactivate');
-    this.activateLabel = this.btn.getAttribute('data-label-activate');
-    this.matomoUrl   = this.btn.getAttribute('data-matomo-url');
-    this.enabled     = true;
+    this.activateLabel   = this.btn.getAttribute('data-label-activate');
+    this.matomoUrl       = this.btn.getAttribute('data-matomo-url');
+    this.cookieError     = this.btn.getAttribute('data-cookie-error');
+    this.enabled         = null;
 
     this.btn.addEventListener('click', this.onClick.bind(this));
 
@@ -31,6 +32,10 @@ var matomoOptOut = function (options) {
 };
 
 matomoOptOut.prototype.update = function (enabled) {
+    if (this.enabled === enabled) {
+        alert(this.cookieError);
+    }
+
     this.enabled = enabled;
 
     if (this.enabled) {
@@ -51,11 +56,11 @@ matomoOptOut.prototype.onIsTracked = function (response) {
 };
 
 matomoOptOut.prototype.onDoIgnore = function (response) {
-    this.update(!(response.result === 'success'));
+    this.api(this.options.api.isTracked);
 };
 
 matomoOptOut.prototype.onDoTrack = function (response) {
-    this.update(response.result === 'success');
+    this.api(this.options.api.isTracked);
 };
 
 matomoOptOut.prototype.onClick = function () {
