@@ -5,6 +5,7 @@ var matomoOptOut = function (options) {
                 btn: 'matomo-optout-btn',
                 activatedStatus: 'matomo-status-activated',
                 deactivatedStatus: 'matomo-status-deactivated',
+                noNotTrackStatus: 'matomo-status-do-not-track'
             },
             api: {
                 uri: 'index.php?module=API&format=json&method=',
@@ -16,7 +17,15 @@ var matomoOptOut = function (options) {
         options || {}
     );
 
-    this.btn               = document.getElementById(this.options.selectors.btn);
+    this.btn = document.getElementById(this.options.selectors.btn);
+
+    if (this.btn.getAttribute('data-do-not-track') === '1' && navigator.doNotTrack) {
+        this.doNotTrackStatus = document.getElementById(this.options.selectors.noNotTrackStatus);
+        this.doNotTrackStatus.setAttribute('style', '');
+
+        return;
+    }
+
     this.activatedStatus   = document.getElementById(this.options.selectors.activatedStatus);
     this.deactivatedStatus = document.getElementById(this.options.selectors.deactivatedStatus);
 
