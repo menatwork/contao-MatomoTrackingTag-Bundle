@@ -10,6 +10,16 @@
  */
 
 /*
+ * Config
+ */
+
+$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = [
+    \MenAtWork\MatomoTrackingTagBundle\Contao\PiwikTrackingTag::class,
+    'addBackendHint'
+];
+
+
+/*
  * Palette definitions
  */
 

@@ -20,3 +20,5 @@ $GLOBALS['TL_LANG']['tl_content']['matomo_status_activated'][0]   = 'Beschreibun
 $GLOBALS['TL_LANG']['tl_content']['matomo_status_activated'][1]   = 'Die Beschreibung wird angezeigt, wenn das Tracking aktiviert ist.';
 $GLOBALS['TL_LANG']['tl_content']['matomo_status_deactivated'][0] = 'Beschreibung Tracking deaktiviert';
 $GLOBALS['TL_LANG']['tl_content']['matomo_status_deactivated'][1] = 'Die Beschreibung wird angezeigt, wenn das Tracking deaktiviert ist.';
+
+$GLOBALS['TL_LANG']['tl_content']['matomoAjaxOptoutHint'] = 'Dieses Feature setzt das Plugin <a href="https://plugins.matomo.org/AjaxOptOut" target="_blank"><strong>AjaxOptOut</strong></a> in der Matomo Installation voraus.';

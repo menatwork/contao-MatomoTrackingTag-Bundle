@@ -476,4 +476,27 @@ class PiwikTrackingTag extends \Backend
 
         return $strContent;
     }
+
+    /**
+     * Add hint in the backend that AjaxOptOut plugin has to be installed.
+     *
+     * @param $objDca
+     *
+     * @return void
+     */
+    public function addBackendHint($objDca)
+    {
+        $objUser = \BackendUser::getInstance();
+        if ($_POST || \Input::get('act') !== 'edit' || !$objUser->isAdmin)
+        {
+            return;
+        }
+
+        $objCte = \ContentModel::findByPk($objDca->id);
+
+        if ($objCte && $objCte->type === 'matomo_optout')
+        {
+            \Message::addInfo($GLOBALS['TL_LANG']['tl_content']['matomoAjaxOptoutHint']);
+        }
+    }
 }
