@@ -18,4 +18,4 @@ Das Modul wird in den Seitenlayouts oder im Startpunkt einer Website konfigurier
 
 Zusätzlich können Sie in den Einstellungen eine Liste von URL's pflegen auf denen Matomo unter garkeinen Fall eingebunden werden soll. Diese Konfiguration kann für die Entwicklung im Intranet genutzt werden um keine Statistik zu verfälschen.
 
-Außerdem wird ein Inhaltselement "Matomo Ajax Opt out'" zur Verfügung gestellt. Dieses setzt das Plugin [Ajax Opt Out](https://plugins.matomo.org/AjaxOptOut) in der Matomo Installation voraus.
+Außerdem wird ein Inhaltselement "Matomo Ajax Opt out" zur Verfügung gestellt. Dieses setzt das Plugin [Ajax Opt Out](https://plugins.matomo.org/AjaxOptOut) in der Matomo Installation voraus.
