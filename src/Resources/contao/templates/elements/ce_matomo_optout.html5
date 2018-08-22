@@ -6,11 +6,16 @@
 <button type="button"
         id="matomo-optout-btn"
         style="display:none"
-        data-matomo-url="<?= $this->matomoUrl ?>"
-        data-label-deactivate="<?= $this->matomo_btn_deactivate ?>"
-        data-label-activate="<?= $this->matomo_btn_activate ?>"></button>
+        data-matomo-url="<?= \StringUtil::specialchars($this->matomoUrl) ?>"
+        data-label-deactivate="<?= \StringUtil::specialchars($this->matomo_btn_deactivate) ?>"
+        data-label-activate="<?= \StringUtil::specialchars($this->matomo_btn_activate) ?>"
+        data-cookie-error="<?= \StringUtil::specialchars($this->cookieError) ?>"
+        data-do-not-track="<?= $this->matomo_do_not_track ?>"></button>
 <div id="matomo-status-activated" style="display: none"><?= $this->matomo_status_activated ?></div>
 <div id="matomo-status-deactivated" style="display: none"><?= $this->matomo_status_deactivated ?></div>
+<?php if ($this->matomo_do_not_track): ?>
+<div id="matomo-status-do-not-track" style="display: none"><?= $this->matomo_status_do_not_track ?></div>
+<?php endif ?>
 <noscript>
     <iframe src="<?= $this->matomoUrl ?>index.php?module=CoreAdminHome&action=optOut&language=de&backgroundColor=<?= $this->bgColor ?>&fontColor=<?= $this->fontColor ?>&fontSize=<?= $this->fontSize ?>&fontFamily=<?= $this->fontFamily ?>" class="matomo-optout-iframe"></iframe>
 </noscript>

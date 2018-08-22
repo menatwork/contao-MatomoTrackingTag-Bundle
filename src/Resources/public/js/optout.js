@@ -5,6 +5,7 @@ var matomoOptOut = function (options) {
                 btn: 'matomo-optout-btn',
                 activatedStatus: 'matomo-status-activated',
                 deactivatedStatus: 'matomo-status-deactivated',
+                noNotTrackStatus: 'matomo-status-do-not-track'
             },
             api: {
                 uri: 'index.php?module=API&format=json&method=',
@@ -16,14 +17,23 @@ var matomoOptOut = function (options) {
         options || {}
     );
 
-    this.btn               = document.getElementById(this.options.selectors.btn);
+    this.btn = document.getElementById(this.options.selectors.btn);
+
+    if (this.btn.getAttribute('data-do-not-track') === '1' && navigator.doNotTrack) {
+        this.doNotTrackStatus = document.getElementById(this.options.selectors.noNotTrackStatus);
+        this.doNotTrackStatus.setAttribute('style', '');
+
+        return;
+    }
+
     this.activatedStatus   = document.getElementById(this.options.selectors.activatedStatus);
     this.deactivatedStatus = document.getElementById(this.options.selectors.deactivatedStatus);
 
     this.deactivateLabel = this.btn.getAttribute('data-label-deactivate');
-    this.activateLabel = this.btn.getAttribute('data-label-activate');
-    this.matomoUrl   = this.btn.getAttribute('data-matomo-url');
-    this.enabled     = true;
+    this.activateLabel   = this.btn.getAttribute('data-label-activate');
+    this.matomoUrl       = this.btn.getAttribute('data-matomo-url');
+    this.cookieError     = this.btn.getAttribute('data-cookie-error');
+    this.enabled         = null;
 
     this.btn.addEventListener('click', this.onClick.bind(this));
 
@@ -31,6 +41,10 @@ var matomoOptOut = function (options) {
 };
 
 matomoOptOut.prototype.update = function (enabled) {
+    if (this.enabled === enabled) {
+        alert(this.cookieError);
+    }
+
     this.enabled = enabled;
 
     if (this.enabled) {
@@ -51,11 +65,11 @@ matomoOptOut.prototype.onIsTracked = function (response) {
 };
 
 matomoOptOut.prototype.onDoIgnore = function (response) {
-    this.update(!(response.result === 'success'));
+    this.api(this.options.api.isTracked);
 };
 
 matomoOptOut.prototype.onDoTrack = function (response) {
-    this.update(response.result === 'success');
+    this.api(this.options.api.isTracked);
 };
 
 matomoOptOut.prototype.onClick = function () {

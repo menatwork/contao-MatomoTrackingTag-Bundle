@@ -14,3 +14,5 @@
  */
 $GLOBALS['TL_LANG']['ERR']['piwikPath'] = 'Die angegeben URL führt nicht zu einer Matomo(Piwik)-Installation (Fehler: %s %s).';
 $GLOBALS['TL_LANG']['ERR']['ip']        = 'Die angegebenen IP-Adressen sind ungültig. Bitte benutzen Sie nur Zahlen (0-255) oder * als Platzhalter.';
+
+$GLOBALS['TL_LANG']['ERR']['matomoCookie'] = 'Leider konnte Ihre Einstellung nicht gespeichert werden. Das Setzen von Cookies von Drittanbietern muss vom Browser unterstützt werden.';

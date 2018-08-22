@@ -21,4 +21,9 @@ $GLOBALS['TL_LANG']['tl_content']['matomo_status_activated'][1]   = 'The descrip
 $GLOBALS['TL_LANG']['tl_content']['matomo_status_deactivated'][0] = 'Description tracking deactivated';
 $GLOBALS['TL_LANG']['tl_content']['matomo_status_deactivated'][1] = 'The description is shown when the tracking is deactivated.';
 
+$GLOBALS['TL_LANG']['tl_content']['matomo_do_not_track'][0]   = 'Respect do not track';
+$GLOBALS['TL_LANG']['tl_content']['matomo_do_not_track'][1]   = 'Enable if you respect the do not track setting in your matomo installation.';
+$GLOBALS['TL_LANG']['tl_content']['matomo_status_do_not_track'][0] = 'Description for detected do not track';
+$GLOBALS['TL_LANG']['tl_content']['matomo_status_do_not_track'][1] = 'The description is shown when the user sends the do not track header.';
+
 $GLOBALS['TL_LANG']['tl_content']['matomoAjaxOptoutHint'] = 'This feature requires the <a href="https://plugins.matomo.org/AjaxOptOut" target="_blank"><strong>AjaxOptOut</strong></a> plugin being installed at your Matomo installation.';
