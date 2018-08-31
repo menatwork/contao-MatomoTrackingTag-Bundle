@@ -19,7 +19,7 @@ var matomoOptOut = function (options) {
 
     this.btn = document.getElementById(this.options.selectors.btn);
 
-    if (this.btn.getAttribute('data-do-not-track') === '1' && navigator.doNotTrack) {
+    if (this.btn.getAttribute('data-do-not-track') === '1' && navigator.doNotTrack === "1") {
         this.doNotTrackStatus = document.getElementById(this.options.selectors.noNotTrackStatus);
         this.doNotTrackStatus.setAttribute('style', '');
 
