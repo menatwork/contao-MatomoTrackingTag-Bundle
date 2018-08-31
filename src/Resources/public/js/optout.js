@@ -90,9 +90,16 @@ matomoOptOut.prototype.api = function (method) {
 };
 
 matomoOptOut.prototype.merge = function (object, src) {
-    var extended = Object.assign({}, object);
+    var extended = {};
+    var key;
 
-    for (var key in src) {
+    for (key in object) {
+        if (object.hasOwnProperty(key)) {
+            extended[key] = object[key];
+        }
+    }
+
+    for (key in src) {
         if (src.hasOwnProperty(key)) {
             extended[key] = src[key];
         }
