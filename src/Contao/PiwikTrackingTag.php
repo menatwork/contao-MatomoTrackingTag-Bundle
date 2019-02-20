@@ -18,7 +18,7 @@ namespace MenAtWork\MatomoTrackingTagBundle\Contao;
 class PiwikTrackingTag extends \Backend
 {
     // Template name
-    protected $strTemplate = 'mod_piwikTrackingTagSynchron';
+    protected $strTemplate = 'mod_matomo_TrackingTagSynchron';
 
     protected $strScriptType = 'TL_MOOTOOLS';
 
@@ -89,7 +89,7 @@ class PiwikTrackingTag extends \Backend
     }
 
     /**
-     * If we have no value set the 'mod_piwikTrackingTagSynchron' as default.
+     * If we have no value set the 'mod_matomo_TrackingTagSynchron' as default.
      *
      * @param mixed $arrValue
      * @param object $objDC
@@ -100,7 +100,7 @@ class PiwikTrackingTag extends \Backend
     {
         if (empty($arrValue))
         {
-            return 'mod_piwikTrackingTagSynchron';
+            return 'mod_matomo_TrackingTagSynchron';
         }
 
         return $arrValue;
@@ -344,7 +344,7 @@ class PiwikTrackingTag extends \Backend
             return;
         }
 
-        $this->strTemplate = 'mod_piwikTrackingTagSynchron';
+        $this->strTemplate = 'mod_matomo_TrackingTagSynchron';
     }
 
     /**
