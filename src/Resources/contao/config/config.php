@@ -17,7 +17,6 @@ $GLOBALS['TL_HOOKS']['generatePage'][] = array('MenAtWork\\MatomoTrackingTagBund
 $GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('MenAtWork\\MatomoTrackingTagBundle\\Contao\\PiwikTrackingTag', 'validatePath');
 $GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('MenAtWork\\MatomoTrackingTagBundle\\Contao\\PiwikTrackingTag', 'validateUrl');
 $GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('MenAtWork\\MatomoTrackingTagBundle\\Contao\\PiwikTrackingTag', 'validateIP');
-$GLOBALS['TL_HOOKS']['parseBackendTemplate'][] = array('MenAtWork\\MatomoTrackingTagBundle\\Contao\\PiwikTrackingTag', 'checkExtensions');
 
 /**
  * Download extensions
