@@ -54,38 +54,7 @@ class PiwikTrackingTag extends \Backend
      */
     public function findPiwikTemplates($objDC, $blnOneDimension = false)
     {
-        $arrReturn = array();
-        // Get all templates
-        $arrTemplates = $this->getTemplateGroup('mod_matomo');
-        // Get path
-        foreach ($arrTemplates as $key => $value)
-        {
-            // Clean up
-            $mixPath = $this->getTemplate($value);
-
-            // Remove TL_ROOT
-            $mixPath = str_replace(array(TL_ROOT), '', $mixPath);
-            // Remove vendor/menatwork/contao-matomotrackingtag-bundle/src/Resources/contao and co from path
-            if (stripos($mixPath, 'vendor/menatwork/contao-matomotrackingtag-bundle/src/Resources/contao/') !== false)
-            {
-                $mixPath = str_replace(array('vendor/menatwork/contao-matomotrackingtag-bundle/src/Resources/contao/', 'templates'), '', $mixPath);
-            }
-
-            $mixPath = explode('/', $mixPath);
-            array_pop($mixPath);
-            $mixPath = implode("/", array_filter($mixPath));
-
-            if ($blnOneDimension)
-            {
-                $arrReturn[$value] = $value;
-            }
-            else
-            {
-                $arrReturn[$mixPath][$value] = $value;
-            }
-        }
-
-        return $arrReturn;
+        return $this->getTemplateGroup('mod_matomo');
     }
 
     /**
@@ -263,7 +232,6 @@ class PiwikTrackingTag extends \Backend
         }
 
         $objSettings = static::$objSettings;
-        $this->setCurrentTemplate($objSettings->piwikTemplate);
 
         // Check if user/members should not be counted
         if (!$objSettings->piwikCountAdmins AND $this->Input->Cookie('BE_USER_AUTH'))
@@ -279,7 +247,7 @@ class PiwikTrackingTag extends \Backend
         else
         {
             // Create Piwiki JS
-            $objTemplate = new \FrontendTemplate($this->strTemplate);
+            $objTemplate = new \FrontendTemplate($objSettings->piwikTemplate);
             $objTemplate->id = $objSettings->piwikSiteID;
             $objTemplate->title = $objPage->title;
             $objTemplate->url = $objSettings->piwikPath;
@@ -311,40 +279,10 @@ class PiwikTrackingTag extends \Backend
                  $objTemplate->searchWords = '';
             }
 
-            $GLOBALS[$this->strScriptType][] = $objTemplate->parse();
+            $GLOBALS[$this->strScriptType][] = $this->replaceInsertTags($objTemplate->parse());
         }
 
         return;
-    }
-
-    /**
-     * Check if we have a valid value and if the template exist.
-     *
-     * @param string $strTemplate
-     */
-    protected function setCurrentTemplate($strTemplate)
-    {
-        // Load all templates
-        $arrTemplates = $this->findPiwikTemplates(null, true);
-
-        // Check if we have a valid value
-        if (!empty($strTemplate) && in_array($strTemplate, $arrTemplates))
-        {
-            $this->strTemplate = $strTemplate;
-            return;
-        }
-
-        // Check if we have another in the theme template folder
-        $arrTemplates = $this->findPiwikTemplates(null, false);
-
-        // If we have no value and a theme template use it
-        if (empty($strTemplate) && key_exists('templates', $arrTemplates))
-        {
-            $this->strTemplate = array_shift($arrTemplates['templates']);
-            return;
-        }
-
-        $this->strTemplate = 'mod_matomo_TrackingTagSynchron';
     }
 
     /**
@@ -432,49 +370,6 @@ class PiwikTrackingTag extends \Backend
         }
 
         return false;
-    }
-
-    /**
-     * Check the required extensions and files for syncCto
-     *
-     * @param string $strContent
-     * @param string $strTemplate
-     * @return string
-     */
-    public function checkExtensions($strContent, $strTemplate)
-    {
-        if ($strTemplate == 'be_main')
-        {
-            if (!is_array($_SESSION["TL_INFO"]))
-            {
-                $_SESSION["TL_INFO"] = array();
-            }
-
-            // required extensions
-            $arrRequiredExtensions = array(
-                'MultiColumnWizard' => 'multicolumnwizard'
-            );
-
-            // check for required extensions
-            foreach ($arrRequiredExtensions as $key => $val)
-            {
-                $bundles = array_keys(\System::getContainer()->getParameter('kernel.bundles'));
-
-                if (!in_array($val, $bundles))
-                {
-                    $_SESSION["TL_INFO"] = array_merge($_SESSION["TL_INFO"], array($val => 'Please install the required extension <strong>' . $key . '</strong>'));
-                }
-                else
-                {
-                    if (is_array($_SESSION["TL_INFO"]) && key_exists($val, $_SESSION["TL_INFO"]))
-                    {
-                        unset($_SESSION["TL_INFO"][$val]);
-                    }
-                }
-            }
-        }
-
-        return $strContent;
     }
 
     /**
