@@ -279,7 +279,7 @@ class PiwikTrackingTag extends \Backend
                  $objTemplate->searchWords = '';
             }
 
-            $GLOBALS[$this->strScriptType][] = $objTemplate->parse();
+            $GLOBALS[$this->strScriptType][] = $this->replaceInsertTags($objTemplate->parse());
         }
 
         return;
