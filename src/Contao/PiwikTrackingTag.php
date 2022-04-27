@@ -58,6 +58,22 @@ class PiwikTrackingTag extends \Backend
     }
 
     /**
+     * Save/Load Callback to set the default extension list.
+     *
+     * @param mixed $value The value from the widget.
+     *
+     * @return mixed The return value for loading or saving.
+     */
+    public function gtDefaultExtensions($value)
+    {
+        if (trim($value) == '') {
+            return $GLOBALS['TL_DCA']['tl_page']['fields']['piwikExtensions']['default'];
+        } else {
+            return $value;
+        }
+    }
+
+    /**
      * If we have no value set the 'mod_matomo_TrackingTagSynchron' as default.
      *
      * @param mixed $arrValue
