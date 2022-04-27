@@ -9,15 +9,16 @@
  * @filesource
  */
 
+use MenAtWork\MatomoTrackingTagBundle\Contao\PiwikTrackingTag;
+
 /*
  * Config
  */
 
 $GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = [
-    \MenAtWork\MatomoTrackingTagBundle\Contao\PiwikTrackingTag::class,
+    PiwikTrackingTag::class,
     'addBackendHint'
 ];
-
 
 /*
  * Palette definitions
@@ -25,11 +26,11 @@ $GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = [
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'matomo_do_not_track';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['matomo_optout']  = '{type_legend},type,headline'
-    . ';{matomo_legend},matomo_btn_activate,matomo_btn_deactivate,matomo_status_activated,matomo_status_deactivated,matomo_do_not_track'
-    . ';{template_legend:hide},customTpl'
-    . ';{protected_legend:hide},protected'
-    . ';{expert_legend:hide},guests,cssID'
-    . ';{invisible_legend:hide},invisible,start,stop';
+                                                                 . ';{matomo_legend},matomo_btn_activate,matomo_btn_deactivate,matomo_status_activated,matomo_status_deactivated,matomo_do_not_track'
+                                                                 . ';{template_legend:hide},customTpl'
+                                                                 . ';{protected_legend:hide},protected'
+                                                                 . ';{expert_legend:hide},guests,cssID'
+                                                                 . ';{invisible_legend:hide},invisible,start,stop';
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['matomo_do_not_track'] = 'matomo_status_do_not_track';
 

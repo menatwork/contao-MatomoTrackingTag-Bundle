@@ -9,14 +9,18 @@
  * @filesource
  */
 
+use MenAtWork\MatomoTrackingTagBundle\Contao\MatomoOptoutElement;
+use MenAtWork\MatomoTrackingTagBundle\Contao\PiwikTrackingTag;
+
 /**
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['getPageLayout'][] = array('MenAtWork\\MatomoTrackingTagBundle\\Contao\\PiwikTrackingTag', 'initializeSettings');
-$GLOBALS['TL_HOOKS']['generatePage'][] = array('MenAtWork\\MatomoTrackingTagBundle\\Contao\\PiwikTrackingTag', 'generatePage');
-$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('MenAtWork\\MatomoTrackingTagBundle\\Contao\\PiwikTrackingTag', 'validatePath');
-$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('MenAtWork\\MatomoTrackingTagBundle\\Contao\\PiwikTrackingTag', 'validateUrl');
-$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('MenAtWork\\MatomoTrackingTagBundle\\Contao\\PiwikTrackingTag', 'validateIP');
+
+$GLOBALS['TL_HOOKS']['getPageLayout'][]   = array(PiwikTrackingTag::class, 'initializeSettings');
+$GLOBALS['TL_HOOKS']['generatePage'][]    = array(PiwikTrackingTag::class, 'generatePage');
+$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array(PiwikTrackingTag::class, 'validatePath');
+$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array(PiwikTrackingTag::class, 'validateUrl');
+$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array(PiwikTrackingTag::class, 'validateIP');
 
 /**
  * Download extensions
@@ -26,4 +30,4 @@ $GLOBALS['TL_PIWIK'] = '7z,aac,arc,arj,asf,asx,avi,bin,csv,doc,exe,flv,gif,gz,gz
 /*
  * Content elements
  */
-$GLOBALS['TL_CTE']['matomo']['matomo_optout'] = \MenAtWork\MatomoTrackingTagBundle\Contao\MatomoOptoutElement::class;
+$GLOBALS['TL_CTE']['matomo']['matomo_optout'] = MatomoOptoutElement::class;
