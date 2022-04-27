@@ -32,7 +32,7 @@
 		"source":"https://github.com/menatwork/contao-MatomoTrackingTag-Bundle"
 	},
 	"require":{
-		"php":"^7.0",
+		"php":"^7.4 || ^8.0",
 		"contao/core-bundle": "^4.4",
 		"menatwork/contao-multicolumnwizard-bundle":"~3.4"
 	},
