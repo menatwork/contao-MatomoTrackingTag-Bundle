@@ -14,6 +14,6 @@
  */
 $GLOBALS['TL_LANG']['MOD']['PiwikTrackingTag'] = array('Matomo tracking tag in the frontend');
 
-$GLOBALS['TL_LANG']['CTE']['matomo']        = 'Matomo';
-$GLOBALS['TL_LANG']['CTE']['matomo_optout'] = array('Matomo Ajax Opt out', 'Ajax based Opt out.');
+$GLOBALS['TL_LANG']['CTE']['matomo']            = 'Matomo';
+$GLOBALS['TL_LANG']['CTE']['matomo_optout']     = array('Matomo Ajax Opt out', 'Ajax based Opt out.');
 $GLOBALS['TL_LANG']['CTE']['matomo_track_goal'] = array('Matomo goal tracking', 'track manual goal.');
