@@ -26,4 +26,7 @@ $GLOBALS['TL_LANG']['tl_content']['matomo_do_not_track'][1]   = 'Enable if you r
 $GLOBALS['TL_LANG']['tl_content']['matomo_status_do_not_track'][0] = 'Description for detected do not track';
 $GLOBALS['TL_LANG']['tl_content']['matomo_status_do_not_track'][1] = 'The description is shown when the user sends the do not track header.';
 
+$GLOBALS['TL_LANG']['tl_content']['matomo_track_goal_id'][0] = 'Goal ID for manually tracking';
+$GLOBALS['TL_LANG']['tl_content']['matomo_track_goal_id'][1] = 'Enter the Goal ID, which you want to track manually in matomo.';
+
 $GLOBALS['TL_LANG']['tl_content']['matomoAjaxOptoutHint'] = 'This feature requires the <a href="https://plugins.matomo.org/AjaxOptOut" target="_blank"><strong>AjaxOptOut</strong></a> plugin being installed at your Matomo installation.';
