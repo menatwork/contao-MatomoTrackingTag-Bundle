@@ -31,6 +31,12 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['matomo_optout']  = '{type_legend},
                                                                  . ';{protected_legend:hide},protected'
                                                                  . ';{expert_legend:hide},guests,cssID'
                                                                  . ';{invisible_legend:hide},invisible,start,stop';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['matomo_trackGoal']  = '{type_legend},type'
+                                                                 . ';{matomo_legend},matomo_track_goal_id'
+                                                                 . ';{template_legend:hide},customTpl'
+                                                                 . ';{protected_legend:hide},protected'
+                                                                 . ';{expert_legend:hide},guests,cssID'
+                                                                 . ';{invisible_legend:hide},invisible,start,stop';
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['matomo_do_not_track'] = 'matomo_status_do_not_track';
 
@@ -91,4 +97,13 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['matomo_status_do_not_track'] = [
     'inputType' => 'textarea',
     'eval'      => ['tl_class' => 'clr long', 'rte' => 'tinyMCE', 'style' => 'height:80px'],
     'sql'       => "mediumtext NULL",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['matomo_track_goal_id'] = [
+    'label'     => &$GLOBALS['TL_LANG']['tl_content']['matomo_track_goal_id'],
+    'exclude'   => true,
+    'search'    => true,
+    'inputType' => 'text',
+    'eval'      => ['tl_class' => 'w50 clr'],
+    'sql'       => "INT UNSIGNED NULL",
 ];
