@@ -1,0 +1,3 @@
+<script>
+    _paq.push(['trackGoal', <?= $this->matomo_track_goal_id ?>]);
+</script>
