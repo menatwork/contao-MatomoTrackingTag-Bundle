@@ -10,6 +10,7 @@
  */
 
 use MenAtWork\MatomoTrackingTagBundle\Contao\MatomoOptoutElement;
+use MenAtWork\MatomoTrackingTagBundle\Contao\MatomoTrackGoalElement;
 use MenAtWork\MatomoTrackingTagBundle\Contao\PiwikTrackingTag;
 
 /**
@@ -31,3 +32,5 @@ $GLOBALS['TL_PIWIK'] = '7z,aac,arc,arj,asf,asx,avi,bin,csv,doc,exe,flv,gif,gz,gz
  * Content elements
  */
 $GLOBALS['TL_CTE']['matomo']['matomo_optout'] = MatomoOptoutElement::class;
+$GLOBALS['TL_CTE']['matomo']['matomo_trackGoal'] = MatomoTrackGoalElement::class;
+
