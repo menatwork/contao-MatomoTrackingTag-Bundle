@@ -199,7 +199,7 @@ class PiwikTrackingTag extends \Backend
         foreach ($arrIPBlacklist as $key => $value)
         {
             // Check if we have an empty value
-            if(strlen( $value["ip"]) == 0)
+            if(!isset($value["ip"]) || strlen( $value["ip"]) == 0)
             {
                 continue;
             }
